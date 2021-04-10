@@ -110,3 +110,16 @@ body, html {
     width: 100%;
     z-index: 30;
 }
+
+@media screen and (max-width: 768px) {
+    #videoBg {
+        background-color: var(--BjsLightGray);
+    }
+}
+@media screen and (max-width: 640px) {
+    #slider1 .slick-dots li button:before {
+        font-family: slick;
+        font-size: 19px;
+        color: #000000;
+    }
+}

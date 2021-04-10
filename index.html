@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BJS</title>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="./tailwind.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Slick Slider CDN  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
@@ -14,18 +16,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
         integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
         crossorigin="anonymous" />
+    <script src="./alpine.min.js"></script>
     <link rel="stylesheet" href="./stylesheet.css">
+    <style>
+     [x-cloak] { display: none; }
+    </style>
 </head>
 <body>
-    <header class="max-w-screen-2xl mx-auto bg-red shadow">
-        <div class="w-fulllg:divide-y lg:divide-gray-200">
-            <div class="relative px-2 sm:px-4 lg:px-8 flex justify-between items-center py-4">
+  <!-- Header  -->
+    <header x-data="{showNav : false}" class="max-w-screen-2xl relative mx-auto bg-red shadow">
+        <div class="w-full lg:divide-y lg:divide-gray-200">
+            <div class="relative px-2 sm:px-4 lg:px-8 flex justify-between items-center py-2 lg:py-4">
                 <div class="relative z-10 px-2 flex">
                     <div class="flex items-center">
-                        <img class="block h-32 w-auto" src="./assets/images/logoBJS.jpg" alt="Workflow">
+                        <img class="block h-16 lg:h-32 w-auto" src="./assets/images/logoBJS.jpg" alt="Workflow">
                     </div>
                 </div>
-                <div class="flex flex-col items-end gap-y-4">
+                <div class="hidden lg:flex flex-col items-end gap-y-4">
                     <p class="text-white text-2xl">
                         Call Us <a class="font-semibold" href="tel:300 000 00 00">877-BJS-4747</a> <span class="px-2">|</span> <a class="font-semibold" href="mailto:xxx@gmail.com">Email Us</a>
                     </p>
@@ -40,60 +47,56 @@
                 </div>
                 <div class="relative z-10 flex items-center lg:hidden">
                 <!-- Mobile menu button -->
-                <button type="button" class="rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                <button type="button" class="rounded-md p-2 inline-flex items-center justify-center text-white focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
                     <span class="sr-only">Open menu</span>
-                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <svg x-show="showNav == false" @click="showNav = !showNav" class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
-                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <svg x-show="showNav == true" @click="showNav = !showNav" class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
                 </div>
             </div>
-            <nav class="hidden px-2 sm:px-4 lg:px-8 lg:py-2 justify-end md:flex lg:space-x-8 bg-lightGray" aria-label="Global">
-                <a href="#" class="text-gray-800 py-2 px-3 inline-flex items-center text-xl font-semibold">
+            <nav class="hidden lg:flex px-2 sm:px-4 lg:px-8 lg:py-2 lg:justify-end flex-col lg:flex-row lg:space-x-8 bg-lightGray" aria-label="Global">
+                <a href="#" class="text-gray-800 py-2 px-3 inline-flex justify-center lg:justify-start items-center text-sm lg:text-xl font-semibold">
                     Products   
                 </a>
         
-                <a href="#" class="text-gray-800 py-2 px-3 inline-flex items-center text-xl font-semibold">
+                <a href="#" class="text-gray-800 py-2 px-3 inline-flex justify-center lg:justify-start items-center text-sm lg:text-xl font-semibold">
                     How It Works
                 </a>
         
-                <a href="#" class="text-gray-800 py-2 px-3 inline-flex items-center text-xl font-semibold">
+                <a href="#" class="text-gray-800 py-2 px-3 inline-flex justify-center lg:justify-start items-center text-sm lg:text-xl font-semibold">
                     Free Estimate
                 </a>
         
-                <a href="#" class="text-gray-800 py-2 px-3 inline-flex items-center text-xl font-semibold">
+                <a href="#" class="text-gray-800 py-2 px-3 inline-flex justify-center lg:justify-start items-center text-sm lg:text-xl font-semibold">
                     Back to w
                 </a>
             </nav>
         </div>
-    
+
         <!-- Mobile menu, show/hide based on menu state. -->
-        <nav class="lg:hidden px-2 sm:px-4 lg:px-8 lg:py-2 justify-end md:flex lg:space-x-8 bg-lightGray" aria-label="Global">
-            <a href="#" class="text-gray-800 py-2 px-3 inline-flex items-center text-xl font-semibold">
-                Products   
-            </a>
-    
-            <a href="#" class="text-gray-800 py-2 px-3 inline-flex items-center text-xl font-semibold">
-                How It Works
-            </a>
-    
-            <a href="#" class="text-gray-800 py-2 px-3 inline-flex items-center text-xl font-semibold">
-                Free Estimate
-            </a>
-    
-            <a href="#" class="text-gray-800 py-2 px-3 inline-flex items-center text-xl font-semibold">
-                Back to w
-            </a>
+        <nav x-show="showNav" class="absolute top-20 z-20 h-40 w-full flex lg:hidden px-2 sm:px-4 lg:px-8 lg:py-2 lg:justify-end flex-col lg:flex-row lg:space-x-8 bg-lightGray" aria-label="Global">
+          <a href="#" class="text-gray-800 py-2 px-3 inline-flex justify-center lg:justify-start items-center text-sm lg:text-xl font-semibold">
+              Products   
+          </a>
+          <a href="#" class="text-gray-800 py-2 px-3 inline-flex justify-center lg:justify-start items-center text-sm lg:text-xl font-semibold">
+              How It Works
+          </a>
+          <a href="#" class="text-gray-800 py-2 px-3 inline-flex justify-center lg:justify-start items-center text-sm lg:text-xl font-semibold">
+              Free Estimate
+          </a>
+          <a href="#" class="text-gray-800 py-2 px-3 inline-flex justify-center lg:justify-start items-center text-sm lg:text-xl font-semibold">
+              Back to w
+          </a>
         </nav>
     </header>
-
     <!-- Slider  -->
-    <div id="slider1" class="max-w-screen-2xl overflow-hidden relative mb-32 lg:mb-20 mx-5 lg:mx-10 flex items-center justify-end 2xl:mx-auto">
-        <div class="hidden md:flex w-full">
-          <div class="home-slider container max-h-96 h-auto">
+    <div id="slider1" class="max-w-screen-2xl overflow-hidden relative mb-9 lg:mb-20 lg:mx-10 flex items-center justify-end 2xl:mx-auto">
+        <div class="flex w-full">
+          <div class="home-slider container max-h-96 h-64 md:h-auto">
             <div class="mx-auto">
                     <img class="w-full" src="./assets/images/bg2.jpg" alt="">
             </div>
@@ -109,146 +112,146 @@
                   <img class="w-full" src="./assets/images/bg1.jpg" alt=""> 
             </div>
           </div>
-          <div class="slider-dots-container absolute h-10 z-20 bottom-0 w-full bg-gray-500">
+          <div class="slider-dots-container absolute h-10 z-20 -bottom-0.5 lg:bottom-0 w-full bg-black md:bg-gray-500">
             <!-- For Slider Dots  -->
           </div>
         </div>
         <!-- Text Section -->
-        <div class="absolute top-0 left-0 w-2/5 bg-black border-none md:opacity-75 h-full overflow-hidden lg:py-12 p-2 lg:px-20">
-            <h1 class="text-2xl md:text-6xl text-white font-bold mb-3">
+        <div class="absolute top-0 left-0 w-2/4 md:w-2/5 bg-black border-none opacity-75 h-full overflow-hidden py-5 lg:py-12 px-5 lg:px-20">
+            <h1 class="text-xl md:text-3xl lg:text-6xl text-white font-bold mb-3">
                 <span>
                     NEW ROOFING <br> & SIDING
                 </span>
             </h1>
-            <p class="-mt-2 text-white text-sm md:text-xl">
+            <p class="-mt-2 text-white text-lg md:text-xl">
                 PROFESSIONALLY INSTALLED
             </p>
-            <p class="mt-2 text-white text-sm md:text-xl">
+            <p class="mt-2 text-white text-base md:text-xl">
                 For as little as
             </p>
-            <h1 class="text-2xl md:text-5xl text-white font-medium mb-3">
+            <h1 class="text-xl md:text-5xl text-white font-medium mb-1.5 md:mb-3">
                 <span>
                     $XX/Month*
                 </span>
             </h1>
-            <button class="bg-red text-white text-4xl font-medium uppercase px-8 py-2 rounded-md">
+            <button class="bg-red text-white hover:bg-red-700 focus:outline-none text-sm md:text-4xl font-medium uppercase px-3 lg:px-8 py-2 rounded-md">
               FREE ESTIMATE
             </button>
         </div>
     </div>
     <!-- Services  -->
     <div class="max-w-screen-2xl relative mx-5 lg:mx-10 mb-7 2xl:mx-auto">
-      <h1 class="text-3xl text-center md:text-5xl font-bold text-black opacity-80">
+      <h1 class="text-3xl text-center md:text-5xl font-black text-black opacity-80">
         <span>
           Installation Services
         </span>
       </h1>
-        <p class="text-black text-center text-xl">
+        <p class="text-black text-center text-base md:text-xl mt-1 lg:mt-0">
             Click on the applicable service to get an online quote or schedule your free Estimate.
         </p>
-        <div class="grid grid-cols-4 gap-x-14 gap-y-10 mt-14">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-8 md:gap-x-14 md:gap-y-10 mt-14">
             <div class="flex flex-col space-y-4">
-                <div class="object-cover w-60 h-60 shadow-lg flex items-center border mx-auto">
-                    <img class="mx-auto w-52 h-52" src="./assets/images/BathRemodel-BJs.png" alt="">
+                <div class="object-cover p-2 lg:p-0 lg:w-60 lg:h-60 shadow-lg flex items-center border mx-auto">
+                    <img class="mx-auto lg:w-52 lg:h-52" src="./assets/images/BathRemodel-BJs.png" alt="">
                 </div>
-                <p class="text-4xl font-bold text-center text-red px-5">Bath Remodel</p>
+                <p class="text-lg md:text-2xl lg:text-4xl font-bold text-center text-red md:px-5">Bath Remodel</p>
             </div>
             <div class="flex flex-col space-y-4">
-                <div class="object-cover w-60 h-60 shadow-lg flex items-center border mx-auto">
-                    <img class="mx-auto w-52 h-52" src="./assets/images/BathRemodel-BJs.png" alt="">
+                <div class="object-cover p-2 lg:p-0 lg:w-60 lg:h-60 shadow-lg flex items-center border mx-auto">
+                    <img class="mx-auto lg:w-52 lg:h-52" src="./assets/images/BathRemodel-BJs.png" alt="">
                 </div>
-                <p class="text-4xl font-bold text-center text-red px-5">Custom Blinds,
+                <p class="text-lg md:text-2xl lg:text-4xl font-bold text-center text-red md:px-5">Custom Blinds,
                   Shades & Shutters</p>
             </div>
             <div class="flex flex-col space-y-4">
-                <div class="object-cover w-60 h-60 shadow-lg flex items-center border mx-auto">
-                    <img class="mx-auto w-52 h-52" src="./assets/images/CabinetRefacing-BJs.png" alt="">
+                <div class="object-cover p-2 lg:p-0 lg:w-60 lg:h-60 shadow-lg flex items-center border mx-auto">
+                    <img class="mx-auto lg:w-52 lg:h-52" src="./assets/images/CabinetRefacing-BJs.png" alt="">
                 </div>
-                <p class="text-4xl font-bold text-center text-red px-5">Cabinet Refacing</p>
+                <p class="text-lg md:text-2xl lg:text-4xl font-bold text-center text-red md:px-5">Cabinet Refacing</p>
             </div>
             <div class="flex flex-col space-y-4">
-                <div class="object-cover w-60 h-60 shadow-lg flex items-center border mx-auto">
-                    <img class="mx-auto w-52 h-52" src="./assets/images/ExteriorDoors-BJs.png" alt="">
+                <div class="object-cover p-2 lg:p-0 lg:w-60 lg:h-60 shadow-lg flex items-center border mx-auto">
+                    <img class="mx-auto lg:w-52 lg:h-52" src="./assets/images/ExteriorDoors-BJs.png" alt="">
                 </div>
-                <p class="text-4xl font-bold text-center text-red px-5">Exterior Doors</p>
+                <p class="text-lg md:text-2xl lg:text-4xl font-bold text-center text-red md:px-5">Exterior Doors</p>
             </div>
             <div class="flex flex-col space-y-4">
-              <div class="object-cover w-60 h-60 shadow-lg flex items-center border mx-auto">
-                  <img class="mx-auto w-52 h-52" src="./assets/images/Flooring-BJs.png" alt="">
+              <div class="object-cover p-2 lg:p-0 lg:w-60 lg:h-60 shadow-lg flex items-center border mx-auto">
+                  <img class="mx-auto lg:w-52 lg:h-52" src="./assets/images/Flooring-BJs.png" alt="">
               </div>
-              <p class="text-4xl font-bold text-center text-red px-5">Flooring</p>
+              <p class="text-lg md:text-2xl lg:text-4xl font-bold text-center text-red md:px-5">Flooring</p>
             </div>
             <div class="flex flex-col space-y-4">
-                <div class="object-cover w-60 h-60 shadow-lg flex items-center border mx-auto">
-                    <img class="mx-auto w-52 h-52" src="./assets/images/Generators-BJs.png" alt="">
+                <div class="object-cover p-2 lg:p-0 lg:w-60 lg:h-60 shadow-lg flex items-center border mx-auto">
+                    <img class="mx-auto lg:w-52 lg:h-52" src="./assets/images/Generators-BJs.png" alt="">
                 </div>
-                <p class="text-4xl font-bold text-center text-red px-5">Generators</p>
+                <p class="text-lg md:text-2xl lg:text-4xl font-bold text-center text-red md:px-5">Generators</p>
             </div>
             <div class="flex flex-col space-y-4">
-              <div class="object-cover w-60 h-60 shadow-lg flex items-center border mx-auto">
-                  <img class="mx-auto w-52 h-52" src="./assets/images/Gutters-BJs.png" alt="">
+              <div class="object-cover p-2 lg:p-0 lg:w-60 lg:h-60 shadow-lg flex items-center border mx-auto">
+                  <img class="mx-auto lg:w-52 lg:h-52" src="./assets/images/Gutters-BJs.png" alt="">
               </div>
-              <p class="text-4xl font-bold text-center text-red px-5">Gutters</p>
+              <p class="text-lg md:text-2xl lg:text-4xl font-bold text-center text-red md:px-5">Gutters</p>
           </div>
           <div class="flex flex-col space-y-4">
-            <div class="object-cover w-60 h-60 shadow-lg flex items-center border mx-auto">
-                <img class="mx-auto w-52 h-52" src="./assets/images/HVAC-BJs.png" alt="">
+            <div class="object-cover p-2 lg:p-0 lg:w-60 lg:h-60 shadow-lg flex items-center border mx-auto">
+                <img class="mx-auto lg:w-52 lg:h-52" src="./assets/images/HVAC-BJs.png" alt="">
             </div>
-            <p class="text-4xl font-bold text-center text-red px-5">Heating & Air</p>
+            <p class="text-lg md:text-2xl lg:text-4xl font-bold text-center text-red md:px-5">Heating & Air</p>
         </div>
         <div class="flex flex-col space-y-4">
-          <div class="object-cover w-60 h-60 shadow-lg flex items-center border mx-auto">
-              <img class="mx-auto w-52 h-52" src="./assets/images/Insulation-BJs.png" alt="">
+          <div class="object-cover p-2 lg:p-0 lg:w-60 lg:h-60 shadow-lg flex items-center border mx-auto">
+              <img class="mx-auto lg:w-52 lg:h-52" src="./assets/images/Insulation-BJs.png" alt="">
           </div>
-          <p class="text-4xl font-bold text-center text-red px-5">Insulation</p>
+          <p class="text-lg md:text-2xl lg:text-4xl font-bold text-center text-red md:px-5">Insulation</p>
         </div>
         <div class="flex flex-col space-y-4">
-          <div class="object-cover w-60 h-60 shadow-lg flex items-center border mx-auto">
-              <img class="mx-auto w-52 h-52" src="./assets/images/KitchenRemodel-BJs.png" alt="">
+          <div class="object-cover p-2 lg:p-0 lg:w-60 lg:h-60 shadow-lg flex items-center border mx-auto">
+              <img class="mx-auto lg:w-52 lg:h-52" src="./assets/images/KitchenRemodel-BJs.png" alt="">
           </div>
-          <p class="text-4xl font-bold text-center text-red px-5">Kitchen Remodel </p>
+          <p class="text-lg md:text-2xl lg:text-4xl font-bold text-center text-red md:px-5">Kitchen Remodel </p>
         </div>
         <div class="flex flex-col space-y-4">
-          <div class="object-cover w-60 h-60 shadow-lg flex items-center border mx-auto">
-              <img class="mx-auto w-52 h-52" src="./assets/images/Roofing-BJs.png" alt="">
+          <div class="object-cover p-2 lg:p-0 lg:w-60 lg:h-60 shadow-lg flex items-center border mx-auto">
+              <img class="mx-auto lg:w-52 lg:h-52" src="./assets/images/Roofing-BJs.png" alt="">
           </div>
-          <p class="text-4xl font-bold text-center text-red px-5">Roofing</p>
+          <p class="text-lg md:text-2xl lg:text-4xl font-bold text-center text-red md:px-5">Roofing</p>
         </div>
         <div class="flex flex-col space-y-4">
-          <div class="object-cover w-60 h-60 shadow-lg flex items-center border mx-auto">
-              <img class="mx-auto w-52 h-52" src="./assets/images/Siding-BJs.png" alt="">
+          <div class="object-cover p-2 lg:p-0 lg:w-60 lg:h-60 shadow-lg flex items-center border mx-auto">
+              <img class="mx-auto lg:w-52 lg:h-52" src="./assets/images/Siding-BJs.png" alt="">
           </div>
-          <p class="text-4xl font-bold text-center text-red px-5">Siding</p>
+          <p class="text-lg md:text-2xl lg:text-4xl font-bold text-center text-red md:px-5">Siding</p>
         </div>
         <div class="flex flex-col space-y-4">
-          <div class="object-cover w-60 h-60 shadow-lg flex items-center border mx-auto">
-              <img class="mx-auto w-52 h-52" src="./assets/images/Solar-BJs.png" alt="">
+          <div class="object-cover p-2 lg:p-0 lg:w-60 lg:h-60 shadow-lg flex items-center border mx-auto">
+              <img class="mx-auto lg:w-52 lg:h-52" src="./assets/images/Solar-BJs.png" alt="">
           </div>
-          <p class="text-4xl font-bold text-center text-red px-5">Solar</p>
+          <p class="text-lg md:text-2xl lg:text-4xl font-bold text-center text-red md:px-5">Solar</p>
         </div>
         <div class="flex flex-col space-y-4">
-          <div class="object-cover w-60 h-60 shadow-lg flex items-center border mx-auto">
-              <img class="mx-auto w-52 h-52" src="./assets/images/WaterFiltration-BJs.png" alt="">
+          <div class="object-cover p-2 lg:p-0 lg:w-60 lg:h-60 shadow-lg flex items-center border mx-auto">
+              <img class="mx-auto lg:w-52 lg:h-52" src="./assets/images/WaterFiltration-BJs.png" alt="">
           </div>
-          <p class="text-4xl font-bold text-center text-red px-5">Water Filtration</p>
+          <p class="text-lg md:text-2xl lg:text-4xl font-bold text-center text-red md:px-5">Water Filtration</p>
         </div>
         <div class="flex flex-col space-y-4">
-          <div class="object-cover w-60 h-60 shadow-lg flex items-center border mx-auto">
-              <img class="mx-auto w-52 h-52" src="./assets/images/Windows-BJs.png" alt="">
+          <div class="object-cover p-2 lg:p-0 lg:w-60 lg:h-60 shadow-lg flex items-center border mx-auto">
+              <img class="mx-auto lg:w-52 lg:h-52" src="./assets/images/Windows-BJs.png" alt="">
           </div>
-          <p class="text-4xl font-bold text-center text-red px-5">Windows</p>
+          <p class="text-lg md:text-2xl lg:text-4xl font-bold text-center text-red md:px-5">Windows</p>
         </div>
         </div>
     </div>
     <!-- Apply For FINANCING  -->
-    <div class="max-w-screen-2xl overflow-hidden relative mx-5 lg:mx-10 pt-12 pb-10 2xl:mx-auto">
-      <div class="relative mt-14 justify-center items-center">
+    <div class="max-w-screen-2xl overflow-hidden relative lg:mx-10 lg:pt-12 lg:pb-10 2xl:mx-auto">
+      <div class="relative mt-5 lg:mt-14 justify-center items-center">
         <div class="mx-auto max-h-96">
-          <img class="w-full" src="./assets/images/bg2.jpg" alt="">
+          <img class="w-full h-64 md:h-72 lg:h-auto" src="./assets/images/bg2.jpg" alt="">
         </div>
         <!-- Text Section -->
-        <div class="absolute top-16 text-center left-1/4 w-1/2 bg-white border-none md:opacity-90 overflow-hidden py-8 lg:px-10">
-            <h1 class="text-2xl md:text-5xl text-black font-extrabold mb-3">
+        <div class="absolute top-5 lg:top-16 text-center left-12 lg:left-1/4 w-3/4 lg:w-1/2 bg-white border-none opacity-90 overflow-hidden py-8 px-5 lg:px-10">
+            <h1 class="text-xl md:text-2xl lg:text-5xl text-black font-extrabold mb-3">
                 <span>
                   Buy Now & Don't Pay
                   Until Next Year!
@@ -257,57 +260,57 @@
             <p class=" text-black text-sm md:text-3xl font-bold">
               12 Months No Payments, No Interest*
             </p>
-            <button class="mt-4 bg-red text-white text-4xl font-medium uppercase px-8 py-2 rounded-md border-4 border-white">
+            <button class="mt-4 bg-red text-white hover:bg-red-700 focus:outline-none text-sm md:text-4xl font-medium uppercase px-3 lg:px-8 py-2 rounded-md border-4 border-white">
               APPLY FOR FINANCING
             </button>
         </div>
       </div>
     </div>
     <!-- Inspiration  -->
-    <div class="max-w-screen-2xl overflow-hidden relative 2xl:mx-auto bg-lightGray pt-12 mt-20">
+    <div class="max-w-screen-2xl overflow-hidden relative 2xl:mx-auto bg-lightGray pt-12 mt-12 lg:mt-20">
       <div class="mx-5 lg:mx-10">
-        <h1 class="text-3xl text-center md:text-5xl font-bold text-black opacity-80">
+        <h1 class="text-3xl text-center md:text-5xl font-black text-black opacity-80">
           <span>
             Looking for Inspiration?
           </span>
         </h1>
         <div class="relative mt-14 justify-center items-center">
-          <div class="grid grid-cols-4 gap-x-0 gap-y-10 mt-14">
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-0 gap-y-10 mt-14">
             <div class="relative border-2 border-white overflow-hidden flex flex-col space-y-4">
                 <div class="object-cover w-full shadow-lg mx-auto">
                     <img class="mx-auto w-full" src="./assets/images/Flooring-BJs.png" alt="">
                 </div>
-                <div class="absolute h-12 z-20 bottom-0 w-full bg-black opacity-50 flex items-center">
-                  <p class="text-2xl font-semibold text-center text-white px-5">Flooring</p>
+                <div class="absolute h-10 md:h-12 z-20 bottom-0 w-full bg-black opacity-50 flex items-center">
+                  <p class="text-xl md:text-2xl font-semibold text-center text-white px-5">Flooring</p>
                 </div>
             </div>
             <div class="relative border-2 border-white overflow-hidden flex flex-col space-y-4">
               <div class="object-cover w-full shadow-lg mx-auto">
                   <img class="mx-auto w-full" src="./assets/images/KitchenRemodel-BJs.png" alt="">
               </div>
-              <div class="absolute h-12 z-20 bottom-0 w-full bg-black opacity-50 flex items-center">
-                <p class="text-2xl font-semibold text-center text-white px-5">Kitchens</p>
+              <div class="absolute h-10 md:h-12 z-20 bottom-0 w-full bg-black opacity-50 flex items-center">
+                <p class="text-xl md:text-2xl font-semibold text-center text-white px-5">Kitchens</p>
               </div>
             </div>
             <div class="relative border-2 border-white overflow-hidden flex flex-col space-y-4">
               <div class="object-cover w-full shadow-lg mx-auto">
                   <img class="mx-auto w-full" src="./assets/images/BathRemodel-BJs.png" alt="">
               </div>
-              <div class="absolute h-12 z-20 bottom-0 w-full bg-black opacity-50 flex items-center">
-                <p class="text-2xl font-semibold text-center text-white px-5">Bathrooms</p>
+              <div class="absolute h-10 md:h-12 z-20 bottom-0 w-full bg-black opacity-50 flex items-center">
+                <p class="text-xl md:text-2xl font-semibold text-center text-white px-5">Bathrooms</p>
               </div>
             </div>
             <div class="relative border-2 border-white overflow-hidden flex flex-col space-y-4">
               <div class="object-cover w-full shadow-lg mx-auto">
                   <img class="mx-auto w-full" src="./assets/images/Windows-BJs.png" alt="">
               </div>
-              <div class="absolute h-12 z-20 bottom-0 w-full bg-black opacity-50 flex items-center">
-                <p class="text-2xl font-semibold text-center text-white px-5">Windows</p>
+              <div class="absolute h-10 md:h-12 z-20 bottom-0 w-full bg-black opacity-50 flex items-center">
+                <p class="text-xl md:text-2xl font-semibold text-center text-white px-5">Windows</p>
               </div>
             </div>
           </div>
           <div class="text-center my-10">
-            <button class="bg-red text-white text-4xl font-medium uppercase px-8 py-3 rounded-md">
+            <button class="bg-red text-white hover:bg-red-700 focus:outline-none text-xl md:text-4xl font-medium uppercase px-5 lg:px-8 py-3 rounded-md">
               VIEW COMPLETE GALLERY
             </button>
           </div>
@@ -315,8 +318,8 @@
       </div>
     </div>
     <!-- REFERENTIES  -->
-    <div class="max-w-screen-2xl relative mx-5 lg:mx-20 2xl:mx-auto pb-24">
-        <h1 class="text-3xl text-center md:text-5xl font-bold text-black opacity-80 my-16">
+    <div class="max-w-screen-2xl relative mx-12 lg:mx-20 2xl:mx-auto pb-5 md:pb-24">
+        <h1 class="text-3xl text-center md:text-5xl font-black text-black opacity-80 my-5 md:my-16">
           <span>
             Customer Ratings
           </span>
@@ -582,30 +585,30 @@
         </div>
     </div>
     <!-- Testimonials -->
-    <div class="max-w-screen-2xl relative 2xl:mx-auto bg-lightGray pt-12 pb-20">
-      <div class="mx-5 lg:mx-10">
-        <h1 class="text-3xl text-center md:text-5xl font-bold text-black opacity-80 mb-16">
+    <div class="max-w-screen-2xl relative 2xl:mx-auto bg-lightGray pt-12 md:pb-20">
+      <div class="lg:mx-10">
+        <h1 class="text-3xl text-center md:text-5xl font-black text-black opacity-80 mx-5 lg:mx-0 mb-16">
           <span>
             Here’s what our customers are saying
           </span>
         </h1>
-        <div class="bg-red lg:pb-0 lg:z-10 lg:relative">
-          <div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-8">
-            <div class="relative lg:col-span-1 lg:-mt-10">
-              <div aria-hidden="true" class="absolute inset-x-0 top-0 h-1/2 bg-white lg:hidden"></div>
+        <div id="videoBg" class="bg-red lg:pb-0 lg:z-10 lg:relative">
+          <div class="flex flex-col lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-8">
+            <div class="relative lg:col-span-1 -mt-16 lg:-mt-10 mx-5 lg:mx-0">
+              <!-- <div aria-hidden="true" class="absolute inset-x-0 top-0 h-1/2 bg-white lg:hidden"></div> -->
               <div class="mx-auto max-w-md px-4 sm:max-w-5xl sm:px-6 lg:p-0 lg:h-full">
-                <div class="aspect-w-10 aspect-h-6 rounded-xl shadow-xl overflow-hidden sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
-                  <iframe src="https://saadgulzar.tech/zahravi/assets/videos/Placeholder.mp4" frameborder="0" allowfullscreen="" class="absolute top-5 border-2 border-white left-0 w-full h-full">
+                <div class="aspect-w-10 aspect-h-6 rounded-xl shadow-xl overflow-hidden sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none h-52 lg:h-full">
+                  <iframe src="https://saadgulzar.tech/zahravi/assets/videos/Placeholder.mp4" frameborder="0" allowfullscreen="" class="absolute top-5 border md:border-2 border-white left-0 w-full h-full">
                   </iframe>                
                 </div>
               </div>
             </div>
-            <div class="mt-12 lg:m-0 lg:col-span-1 lg:pl-8">
+            <div class="bg-red -mt-3 lg:m-0 lg:col-span-1 lg:pl-8">
               <div class="testimonial-slider container max-h-96 h-auto">
-                <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:py-20 lg:max-w-none text-center">
+                <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 pt-5 pb-14 lg:pt-20 lg:pb-20 lg:max-w-none text-center">
                   <blockquote>
                     <div>
-                      <p class="mt-6 text-2xl font- text-white">
+                      <p class="mt-10 lg:mt-6 text-xl lg:text-2xl text-white">
                         “... courteous and willing to answer questions. Did
                         not leave any messes or leave anything behind for us
                         to dispose of! Workers were very much all business,
@@ -613,15 +616,15 @@
                         Excellent from start to finish.”
                       </p>
                     </div>
-                    <footer class="mt-6">
+                    <footer class="mt-2 lg:mt-6">
                       <p class="text-2xl font-bold text-white italic">-S. Ginsberg, Brooklyn NY</p>
                     </footer>
                   </blockquote>
                 </div>
-                <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:py-20 lg:max-w-none text-center">
+                <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 pt-5 pb-14 lg:pt-20 lg:pb-20 lg:max-w-none text-center">
                   <blockquote>
                     <div>
-                      <p class="mt-6 text-2xl font- text-white">
+                      <p class="mt-10 lg:mt-6 text-xl lg:text-2xl text-white">
                         “... courteous and willing to answer questions. Did
                         not leave any messes or leave anything behind for us
                         to dispose of! Workers were very much all business,
@@ -629,15 +632,15 @@
                         Excellent from start to finish.”
                       </p>
                     </div>
-                    <footer class="mt-6">
+                    <footer class="mt-2 lg:mt-6">
                       <p class="text-2xl font-bold text-white italic">-S. Ginsberg, Brooklyn NY</p>
                     </footer>
                   </blockquote>
                 </div>
-                <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:py-20 lg:max-w-none text-center">
+                <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 pt-5 pb-14 lg:pt-20 lg:pb-20 lg:max-w-none text-center">
                   <blockquote>
                     <div>
-                      <p class="mt-6 text-2xl font- text-white">
+                      <p class="mt-10 lg:mt-6 text-xl lg:text-2xl text-white">
                         “... courteous and willing to answer questions. Did
                         not leave any messes or leave anything behind for us
                         to dispose of! Workers were very much all business,
@@ -645,7 +648,7 @@
                         Excellent from start to finish.”
                       </p>
                     </div>
-                    <footer class="mt-6">
+                    <footer class="mt-2 lg:mt-6">
                       <p class="text-2xl font-bold text-white italic">-S. Ginsberg, Brooklyn NY</p>
                     </footer>
                   </blockquote>
@@ -657,19 +660,19 @@
       </div>
     </div>
     <!-- Footer -->
-    <footer class="max-w-screen-2xl mx-auto bg-lightGray mt-20" aria-labelledby="footerHeading">
+    <footer class="max-w-screen-2xl mx-auto bg-lightGray mt-20 hidden lg:block" aria-labelledby="footerHeading">
         <h2 id="footerHeading" class="sr-only">Footer</h2>
         <div class="mx-auto py-12 mx-4 sm:mx-6 lg:py-16 lg:mx-8 border-b-2 border-darkGray">
           <p class="text-3xl text-black opacity-60">
             Call Us <a class="font-bold" href="tel:0300 000 000 00">877-BJS-4747</a>  | <span class="font-bold">Contact Us</span> Online
           </p>
         </div>
-        <div class="mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+        <div class="mx-auto py-12 lg:py-16 lg:px-8">
           <div class="xl:gap-8">
-            <div class="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
-              <div class="md:grid md:grid-cols-2 md:gap-8">
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+              <div class="grid grid-cols-1 md:grid-cols-2 md:gap-8">
                 <div>
-                  <h3 class="text-3xl font-semibold text-black opacity-60">
+                  <h3 class="block text-3xl font-semibold text-black opacity-60">
                     Our Company
                   </h3>
                   <ul class="mt-4 space-y-4">
@@ -717,7 +720,7 @@
                   </ul>
                 </div>
               </div>
-              <div class="md:grid md:grid-cols-2 md:gap-8">
+              <div class="grid grid-cols-1 md:grid-cols-2 md:gap-8">
                 <div>
                   <h3 class="text-3xl font-semibold text-black opacity-60">
                     Products
@@ -853,13 +856,217 @@
           </div>
         </div>
     </footer>
+    <!-- Footer Mobile-->
+    <footer class="max-w-screen-2xl mx-auto bg-lightGray mt-20 block lg:hidden" aria-labelledby="footerHeading">
+      <h2 id="footerHeading" class="sr-only">Footer</h2>
+      <div class="mx-auto py-7 lg:py-16 lg:mx-8 border-b border-darkGray">
+        <p class="text-3xl text-center text-black opacity-60">
+          Call Us <a class="font-black" href="tel:0300 000 000 00">877-BJS-4747</a> <br> <span class="font-black">Contact Us</span> Online
+        </p>
+      </div>
+      <div class="mx-auto lg:py-16 lg:px-8">
+        <div class="flex flex-col">
+          <div>
+            <div x-data="{ showDrop : false}" class="border-b py-3 px-5 border-black bg-white">
+              <h3 @click="showDrop = !showDrop" class="flex justify-between items-center lg:block text-3xl font-semibold text-black opacity-60">
+                Our Company
+                <span x-show="showDrop == false" class="lg:hidden text-red"> + </span>
+                <span x-show="showDrop == true" class="lg:hidden text-red transform rotate-45"> + </span>
+              </h3>
+              <ul x-show="showDrop" class="space-y-4">
+                <li>
+                  <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                    Join Our Network
+                  </a>
+                </li>
+  
+                <li>
+                  <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                    Privacy Policy & Licensing
+                  </a>
+                </li>
+  
+                <li>
+                  <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                    California Privacy Policy
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div  x-data="{ showDrop : false}" class="border-b py-3 px-5 border-black bg-white">
+              <h3 @click="showDrop = !showDrop" class="flex justify-between items-center lg:block text-3xl font-semibold text-black opacity-60">
+                How It Works
+                <span x-show="showDrop == false" class="lg:hidden text-red"> + </span>
+                <span x-show="showDrop == true" class="lg:hidden text-red transform rotate-45"> + </span>
+              </h3>
+              <ul x-show="showDrop" class="space-y-4">
+                <li>
+                  <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                    Certified Contractors
+                  </a>
+                </li>
+  
+                <li>
+                  <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                    Member Pledge
+                  </a>
+                </li>
+  
+                <li>
+                  <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                    Prepare for Your Project
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div x-data="{ showDrop : false}" class="border-b py-3 px-5 border-black bg-white">
+              <h3 @click="showDrop = !showDrop" class="flex justify-between items-center lg:block text-3xl font-semibold text-black opacity-60">
+                Products
+                <span x-show="showDrop == false" class="lg:hidden text-red"> + </span>
+                <span x-show="showDrop == true" class="lg:hidden text-red transform rotate-45"> + </span>
+              </h3>
+              <ul x-show="showDrop" class="space-y-4">
+                <li>
+                  <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                    All Products
+                  </a>
+                </li>
+  
+                <li>
+                  <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                    Bath & Shower Systems
+                  </a>
+                </li>
+  
+                <li>
+                  <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                    Blinds, Shades & Shutters
+                  </a>
+                </li>
+  
+                <li>
+                  <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                    Cabinet Refacing
+                  </a>
+                </li>
+  
+                <li>
+                  <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                    Exterior Doors
+                  </a>
+                </li>
+                <li>
+                    <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Flooring
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Generators
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Gutters
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Heating & Air
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Insulation
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Roofing
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Siding
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Solar
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Water Filtration
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Windows
+                    </a>
+                </li>
+              </ul>
+            </div>
+            <div  x-data="{ showDrop : false}" class="border-b py-3 px-5 border-black bg-white">
+              <h3 @click="showDrop = !showDrop" class="flex justify-between items-center lg:block text-3xl font-semibold text-black opacity-60">
+                Helpful Links
+                <span x-show="showDrop == false" class="lg:hidden text-red"> + </span>
+                <span x-show="showDrop == true" class="lg:hidden text-red transform rotate-45"> + </span>
+              </h3>
+              <ul x-show="showDrop" class="space-y-4">
+                <li>
+                  <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                    Free Estimate
+                  </a>
+                </li>
+  
+                <li>
+                  <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                    Adobe Reader
+                  </a>
+                </li>
+  
+                <li>
+                  <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                    Accessibility Statement
+                  </a>
+                </li>
+                <li>
+                    <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                      BJ’s.com
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Site Map
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        BJ’s Gift Card Terms & Conditions
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        COVID-19
+                    </a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
     <!-- Copyrights -->
-    <div class="max-w-screen-2xl mx-auto bg-white">
-      <p class="text-lg text-gray-500 py-7">
+    <div class="max-w-screen-2xl mx-5 lg:mx-auto bg-white">
+      <p class="text-center md:text-left text-sm md:text-lg text-gray-500 py-7">
         &copy; 2014 - 2024 Powered by Installation Made Easy, Inc. 
       </p>
     </div>
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
       integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
@@ -881,13 +1088,22 @@
         // centerPadding: '20px',
         arrows: true,
         responsive: [
+          {
+            breakpoint: 1150,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                arrows: true,
+            }
+            },
             {
             breakpoint: 1024,
             settings: {
-                slidesToShow: 5,
+                slidesToShow: 2,
                 slidesToScroll: 1,
                 infinite: true,
-                dots: true
+                dots: true,
+                arrows: false,
             }
             },
             {
